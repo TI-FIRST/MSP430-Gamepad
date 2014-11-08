@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta content="HTML Tidy for Windows (vers 15 August 2007), see www.w3.org" name="generator">
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii"><!-- /* * Copyright 2007 by Texas Instruments Incorporated. * All rights reserved. Property of Texas Instruments Incorporated. * Restricted rights to use, duplicate or disclose this code are * granted through contract. * * */ -->
+
+
+
+<title>MSP430 Peripheral Driver Library</title><!-- For now, we use the doxygen style sheet --><link href="docs/html/doxygen.css" rel="stylesheet" type="text/css">
+<link href="docs/html/doxygen.css" rel="stylesheet" type="text/css"></head>
+<body>
+<table width="100%">
+<tbody>
+<tr>
+<td bgcolor="black" width="1"><a href="http://www.ti.com"><img style="border: 0px solid ;" src="doc/images/tilogo.gif" alt="Texas Instruments"></a></td>
+<td bgcolor="red"><img alt="Texas Instruments" src="doc/images/titagline.gif"></td>
+</tr>
+</tbody>
+</table>
+<h1>MSP430 DriverLib &nbsp;1.80.00.18</h1>
+<h2>Release Notes&nbsp;</h2>
+Document Revision: 030614.2134<br>
+<br>
+<h2><a name="Introduction" id="Introduction">Introduction</a></h2>
+<p>This is the MSP430 Peripheral Driver Library.
+This&nbsp;peripheral driver library's intent is to
+allow
+application development at an API level instead at the device register
+level. &nbsp; Allowing developers to concentrate on their
+applications
+instead of the nuances of the particular MSP430 device they are using.
+&nbsp;</p>
+This document is divided into the following sections:
+<ul>
+<li><a href="#Documentation">Documentation</a></li>
+<li><a href="#Whats_New">What's New</a></li>
+<li><a href="#Revision_History">Revision History</a><br>
+</li>
+<li><a href="#Installation">Installation and Usage</a></li>
+<li><a href="#Device_Support">Device Support</a><br>
+</li>
+<li><a href="release_notes.html#Peripheral_Support"><span style="text-decoration: underline;">Peripheral Support</span></a></li>
+<li><a href="#Dependencies">Dependencies</a></li>
+<li><a href="#Validation">Validation Information</a></li>
+<li><a href="#Upgrade_and_Compatibility_Information">Upgrade
+and Compatibility Information</a></li>
+<li><a href="#Examples">Examples</a><br>
+</li>
+<li><span style="text-decoration: underline;"><a href="#Known_Issues2">Known Issues</a><br>
+</span></li>
+<li><a href="#Versioning">Versioning</a></li>
+<li><a href="#Technical_Support">Technical Support
+and Product Updates</a></li>
+</ul>
+<h2><a name="Documentation" id="Documentation">Documentation<br>
+</a></h2>
+<ul>
+<li>MSP430ware Peripheral
+Driver Library API&nbsp;</li>
+<ul>
+<li><a href="doc/MSP430F5xx_6xx/html/index.html">MSP430F5xx_6xx</a></li>
+</ul>
+<ul>
+<li><a href="doc/MSP430FR57xx/html/index.html">MSP430FR57xx</a></li>
+</ul>
+<ul>
+<li><a href="doc/MSP430FR5xx_6xx/html/index.html">MSP430FR5xx_6xx</a></li>
+</ul>
+<li>MSP430ware
+Peripheral
+Driver Library User's Guides</li>
+<ul>
+<li><a href="doc/MSP430F5xx_6xx/MSP430F5xx_6xx_DriverLib_Users_Guide-1_80_00_18.pdf">MSP430F5xx_6xx</a></li>
+</ul>
+<ul>
+<li><a href="doc/MSP430FR57xx/MSP430FR57xx_DriverLib_Users_Guide-1_80_00_18.pdf">MSP430FR57xx</a></li>
+</ul>
+<ul>
+<li><a href="doc/MSP430FR5xx_6xx/MSP430FR5xx_6xx_DriverLib_Users_Guide-1_80_00_18.pdf">MSP430FR5xx_6xx</a></li>
+</ul>
+<li><a href="./manifest.html">Manifest</a></li>
+<li><a href="./license.txt">License</a></li>
+</ul>
+<h2><a name="Whats_New" id="Whats_New">What's&nbsp;New</a></h2>
+<span style="font-weight: bold;">1.80.00.18<br>
+</span><ul><li>Added support for MSP430F6779A device family</li><li>Bugzilla issue (6073) fixed - Clock divider calculation error in timer_b.c</li><li>Users upgrading driverlib from version 1.60 to 1.80, please refer <a href="release_notes.html#Upgrade_and_Compatibility_Information">Upgrade
+and Compatibility Information</a> section.</li><li>Removal
+of baseaddress removes support of Grace 2.20.02.32. Users that rely on
+Grace should not update Driver Library at this time until a new Grace
+is released.</li></ul>
+<h2><a name="Revision_History" id="Whats_New"></a>Revision
+History</h2>
+<span style="font-weight: bold;">1.70.00.41<br></span><ul><li>Improved RTSC support. Driver Library projects added to New
+Project Wizard and Project Template.</li><li>Energia support</li><li>Removed
+baseaddress parameter in core peripherals. Provided backward
+compatibility through compiler define DRIVERLIB_LGEACY_MODE.
+For
+more information view the&nbsp;<a href="release_notes.html#Upgrade_and_Compatibility_Information">Upgrade
+and Compatibility Information</a> section.</li><li>Removal
+of baseaddress removes support of Grace 2.20.02.32. Users that rely on
+Grace should not update Driver Library at this time until a new Grace
+is released.</li><li>Red Hat MSPGCC Support</li><li>Removed deprecated 5xx_6xx folder support</li><li>Code metrics added to documentation</li><li>Workaround added for compiler warnings in older device
+header files</li><li>Fixed various spelling issues in user's guides</li><li>Bugzilla issue (5781) fixed - DAC12_A_init()
+&nbsp;ignores outputSelect argument.</li><li>Bugzilla issue (5347) fixed
+-&nbsp;SD24_B_configureConverterAdvanced() code&nbsp;fixed.</li></ul><span style="font-weight: bold;"></span><span style="font-weight: bold;">1.60.03.05</span><br>
+<ul>
+<li>Added RTSC support. This allows better discoverability by
+Grace and some basic documentation in the Eclipse help system.</li>
+<li>Added P2 update support. Driver Library can now be updated
+through CCS.</li>
+</ul>
+<span style="font-weight: bold;">1.60.02.01</span><br>
+<ul>
+<li>Fixed issue with C++ bindings</li>
+<li>Fixed bug with USCI_A_UART recieveData, transmitData,
+transmitBreak that used the wrong type of register access (16 instead
+of 8)</li>
+<li>Fixed bug with USCI_B_I2C enableInterrupt,
+masterSingleReceive that used the wrong type of register access (16
+instead of 8)</li>
+</ul>
+<span style="font-weight: bold;">1.60.01.08</span><br>
+<ul>
+<li>Fixed include path in example projects to refer to driver
+library copy in workspace instead of from the installation <br>
+</li>
+<li>Minor updates to inc/hw_memmap.h for each supported family</li>
+</ul>
+<span style="font-weight: bold;">1.60.00.46</span><br>
+<ul>
+<li>Added C++ bindings to all driverlib peripherals</li>
+<li>Improved User's Guide Documentation</li>
+<li>Improved Release Notes Format</li>
+<li>Converted CCS examples to use CCS projectSpec</li>
+<li>In
+all driverlib code examples, the source and header files are now copied
+into the project and not linked (unlike previous driverlib releases)</li>
+<li>Examples generated from .projectspec file instead of
+.cproject/.project files</li>
+<li>Clear LPM5 bit for GPIO settings in all Wolverine examples</li>
+<li>Fixed Bug 4537- Set enable bit on ADC to 0 before turning
+ADC on or off in ADC12_B_enable and ADC12_B_disable</li>
+<li>Fixed Bug 4579- Changed comment in
+MPU_createThreeSegments() in&nbsp;MSP430FR5xx_6xx, MSP430FR57xx
+families</li>
+<li>Fixed Bug 4568 - Lock CS modules after unlocking in
+MSP430FR5xx_6xx, MSP430FR57xx families<span style="color: rgb(0, 0, 0); font-family: Helvetica,Arial,Geneva; font-size: 17px; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(208, 208, 208); display: inline ! important; float: none;"></span></li>
+<li>Removed
+(E)USCI_A_UART_init() and (e)uart_baudrate.h/c files in all families.
+Please use&nbsp;(E)USCI_A_UART_initAdvance() instead.&nbsp;The
+values
+to be written into the clockPrescalar, firstModReg, secondModReg and
+overSampling parameters of&nbsp;(E)USCI_A_UART_initAdvance() should
+be
+pre-computed and passed into the initialization function.<a href="http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html">
+http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html</a>
+helps pre-compute the necessary values.</li>
+<li>Removed busy bit checking for all FRAM peripherals</li>
+<li>Fixed Bug 4340 - (E)USCI_I2C timeout functions should use
+pre-decrement rather than post-decrement in while loop</li>
+<li>Fixed Bug 4591 -
+EUSCI_B_I2C_masterSendSingleByteWithTimeout() timeout incorrect</li>
+<li>Fixed
+Bug 3856 - The following AES256 API for MSP430FR5xx_6xx are removed
+AES256_decryptDataUsingEncryptionKey,
+AES256_startDecryptDataUsingEncryptionKey,
+AES256_generateFirstRoundKey,AES256_startGenerateFirstRoundKey. Two new
+API are added - AES_setDecipherKey, AES_startSetDecipherKey&nbsp; </li>
+<li>Fixed Bug 4452 - Need FLASH apis that unlock info memory</li>
+<li>Added version.h&nbsp;to indicate driverlib version no.</li>
+<li>driverlib.h
+file is now available in every supported device family. Including this
+one header
+file in applications is sufficient for using any driverlib API call.
+Including driverlib.h eliminates the need to include "inc/hw_memmap.h"
+and every single "peripheral.h" the user would like to use.&nbsp;</li>
+<li>Driverlib code examples copy the driverlib source and
+header files instead of linking them</li>
+<li>Removed deprecated 5xx_6xx examples. All customers should
+be
+using the new family based structure for driver library development.
+Please refer to the family's user's guides for new APIs.</li>
+<li>EUSCI_SPI,
+EUSCI_I2C, EUSCI_UART APIs are deprecated. Please use
+EUSCI_A_SPI,&nbsp;EUSCI_B_SPI, EUSCI_B_I2C, EUSCI_A_UART APIs for
+EUSCI
+operations.</li>
+<li>The deprecated EUSCI_SPI, EUSCI_I2C, EUSCI_UART APIs are
+removed for MSP430FR5xx_6xx family.</li>
+</ul>
+<span style="font-weight: bold;">1.40.01.00<br>
+</span>
+<ul>
+<li>Changed some remaining UART APIs to use C99 types</li>
+<li>Fixed minor doxygen documentation for CS</li>
+<li>Fixed bug in GPIO_interruptEdgeSelect that caused it to
+fail to work with even ports (P2, P4, ..)</li>
+<li>Fixed bug in COMP_E that accidentally clears the previous
+settings in CECTL2</li>
+<li>Fixed bug in ADC12_B_memoryConfigure that did not allow
+enabling the window comparator</li>
+<li>The header files have been updated to be in sync with
+CCS5.5 Beta</li>
+<li>FRAM_configureWaitStateControl API in 5xx_6xx family now
+ignores the manualWaitState parameter
+since this register bit is now changed&nbsp; to a reserved bit. The
+API
+signature has not changed to maintain backward compatibility..</li>
+<li>FRAM_configureWaitStateControl
+API in MSP430FR5xx_6xx family signature has changed to exclude
+the&nbsp;manualWaitState parameter since this&nbsp;register bit
+is now
+a reserved bit.</li>
+<li>PMM_lockLPM5() API is used in MSP430FR5xx_6xx
+examples to disable the GPIO power-on default high-impedance mode to
+activate previously&nbsp;configured port settings.&nbsp;</li>
+<li><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">Comp_E
+examples in examples\driverlib\5xx_6xx\comp_e will fail to build due to
+a bug in the existing device header file for
+versions of CCS less than CCS 5.3. To workaround this, please upgrade
+CCS or
+replace the msp430fr5969.h from the CCS5.3 release in your CCS install.</span></li>
+<li><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">Comp_E
+examples in examples\driverlib\5xx_6xx\comp_e will fail to build due to
+a bug in the existing device header file for versions of IAR5.5. To
+workaround this, please replace the </span><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">msp430fr5969</span><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">.h
+from
+deprecated\msp430fr5xx_6xx_header_files\IAR from the in your IAR5.5
+install.</span></li>
+</ul>
+<span style="font-weight: bold;">
+1.40.00.00</span><br>
+<ul>
+<li>Added TIMER_X_counterGet to get the current count of the
+timer</li>
+<li>Changed timer initialization functions to not start timer
+automatically</li>
+<li>Added documentation to create driverlib based projects from
+scratch</li>
+<li>Fixed byte order in AES encrypt/decrupt APIs</li>
+<li>Separated EUSCI_SPI to EUSCI_A_SPI and EUSCI_B_SPI</li>
+<li>Separated USCI_SPI to USCI_A_SPI and USCI_B_SPI<br>
+</li>
+<li>Renamed EUCSI_UART to EUSCI_A_UART and USCI_UART to
+USCI_A_UART<br>
+</li>
+<li>Renamed EUSCI_I2C to EUSCI_B_I2C and USCI_I2C to USCI_B_I2C</li>
+<li>Added API CRC_set8BitData and CRC_set16BitData</li>
+<li>Fixed minor doxygen documentation for ADC12_A<br>
+</li>
+<li>Changed driverlib emptyProject to use ELF</li>
+<li><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">Comp_E
+examples in examples\driverlib\5xx_6xx\comp_e will fail to build due to
+a bug in the existing device header file for
+versions of CCS less than CCS 5.3. To workaround this, please upgrade
+CCS or
+replace the msp430fr5969.h from the CCS5.3 release in your CCS install.</span></li>
+<li><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">Comp_E
+examples in examples\driverlib\5xx_6xx\comp_e will fail to build due to
+a bug in the existing device header file for versions of IAR5.5. To
+workaround this, please replace the </span><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">msp430fr5969</span><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">.h
+from
+deprecated\msp430fr5xx_6xx_header_files\IAR from the in your IAR5.5
+install.</span></li>
+</ul>
+<span style="font-weight: bold;">
+</span>
+<ul>
+</ul>
+<span style="font-weight: bold;">1.30.00.00<br>
+</span>
+<ul>
+<li>Added 4 wire EUSCI_SPI support</li>
+<li>Fixed typos in EUSCI examples</li>
+<li>Fixed comments in FRPMM</li>
+<li>Fixed parameters in UCS_clockSignalInit</li>
+<li>Added timeout functions to I2C and EUSCI_I2C peripheral
+drivers</li>
+<li>Fixed bug in GPIO_setDriveStrength API. Modified PxIES
+instead of PxDS<br>
+</li>
+<li>Fixed comments in COMP_E examples</li>
+<li>Added support to ADC12_B to configure window comparator</li>
+<li><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">Comp_E
+examples in examples\driverlib\5xx_6xx\comp_e will fail to build due to
+a bug in the existing device header file for
+versions of CCS less than CCS 5.3. To workaround this, please upgrade
+CCS or
+replace the msp430fr5969.h from the CCS5.3 release in your CCS install.</span></li>
+<li><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">Comp_E
+examples in examples\driverlib\5xx_6xx\comp_e will fail to build due to
+a bug in the existing device header file for versions of IAR5.5. To
+workaround this, please replace the </span><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">msp430fr5969</span><span style="display: inline ! important; float: none; word-spacing: 0px; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size: medium; line-height: normal; font-size-adjust: none; font-stretch: normal; text-transform: none; color: rgb(0, 0, 0); text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2;">.h
+from
+deprecated\msp430fr5xx_6xx_header_files\IAR from the in your IAR5.5
+install.</span></li>
+</ul>
+<ul>
+</ul>
+<h2><a name="Installation" id="Installation">Installation
+and Usage</a></h2>
+<p class="MsoNormal" style="margin: 5pt 0in;">Generally
+DriverLib is
+installed as part of MSP430ware. If you wish to update DriverLib
+from the zip file,
+unzip msp430_driverlib_x_xx_xx_xx.zip in your MSP430Ware installation.
+The installation contains the driver
+library core as well as peripheral examples and API documentation.</p>
+<br>
+After
+installing MSP430Ware or Driver Library restart Code Composer Studio.
+When opening CCS you will be greeted with a window like that shown
+below:<br>
+<img style="width: 691px; height: 543px;" alt="discover" src="doc/images/discover.png"><br>
+<br>
+Accept the new product and approve the content. You will now be able to
+use the RTSC features of driver library. <br>
+For more information about these feautres visit the Driver Library
+User's Guide.
+<p>The MSP430 peripheral driver library contains the following
+components: </p>
+<table border="1">
+<tbody>
+<tr>
+<td>doc </td>
+<td>MSP430 Peripheral Driver Library
+documentation</td>
+</tr>
+<tr>
+<td>driverlib </td>
+<td>MSP430 Peripheral
+Driver Library source code<br>
+</td>
+</tr>
+<tr>
+<td>examples</td>
+<td>MSP430 Peripheral Driver Library examples</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h2><a name="Device_Support"></a>Device Support</h2>
+The following families of devices are support in this release of MSP430
+Driver Library:<br>
+<ul>
+<li>MSP430F5xx_6xx</li>
+<li>MSP430FR57xx</li>
+<li>MSP430FR5xx_6xx</li>
+</ul>
+<h2><a name="Peripheral_Support" id="Known_Issues">Peripheral
+Support</a></h2>
+<h2 style="font-weight: normal;"><small><small>This
+is the 1.80.00.18 release of MSP430 Peripheral Driver
+Library. &nbsp;The following peripherals are supported in this
+release:</small></small></h2>
+<ul>
+<li>MSP430F5xx_6xx Devices</li>
+<ul>
+<li>ADC10_A</li>
+<li>ADC12_A</li>
+<li>AES</li>
+<li>BAK_BATT (Battery Backup System)</li>
+<li>COMP_B</li>
+<li>CRC</li>
+<li>DAC12_A</li>
+<li>DMA</li>
+<li>EUSCI_B_I2C</li>
+<li>EUSCI_A_SPI</li>
+<li>EUSCI_B_SPI</li>
+<li>EUSCI_A_UART</li>
+<li>FLASH</li>
+<li>SFR</li>
+<li>SYS</li>
+<li>GPIO</li>
+<li>LDOPWR</li>
+<li>MPY32</li>
+<li>PMAP</li>
+<li>PMM</li>
+<li>RAM Controller</li>
+<li>REF</li>
+<li>REF_A</li>
+<li>RTC_A</li>
+<li>RTC_B</li>
+<li>RTC_C</li>
+<li>SD24_B</li>
+<li>SFR</li>
+<li>SYS</li>
+<li>TEC</li>
+<li>TIMER_A</li>
+<li>TIMER_B</li>
+<li>TIMER_D</li>
+<li>TLV</li>
+<li>UCS</li>
+<li>USCI_B_I2C</li>
+<li>USCI_A_SPI</li>
+<li>USCI_B_SPI</li>
+<li>USCI_A_UART</li>
+<li>WDT_A</li>
+</ul>
+</ul>
+<ul>
+<li>MSP430FR57xx Devices </li>
+<ul>
+<li>ADC12_B</li>
+<li>AES256</li>
+<li>COMP_E</li>
+<li>CRC</li>
+<li>CS</li>
+<li>DMA</li>
+<li>EUSCI_B_I2C</li>
+<li>EUSCI_A_SPI</li>
+<li>EUSCI_B_SPI</li>
+<li>EUSCI_A_UART</li>
+<li>FRAM</li>
+<li>GPIO</li>
+<li>MPU</li>
+<li>MPY32</li>
+<li>PMM</li>
+<li>REF</li>
+<li>RTC_B</li>
+<li>SFR</li>
+<li>SYS</li>
+<li>TIMER_A</li>
+<li>TIMER_B</li>
+<li>TLV</li>
+<li>WDT_A</li>
+</ul>
+</ul>
+<ul>
+<li>MSP430FR5xx_6xx Devices </li>
+<ul>
+<li>ADC12_B</li>
+<li>AES256</li>
+<li>Comp_E</li>
+<li>CRC</li>
+<li>CS</li>
+<li>DMA</li>
+<li>EUSCI_B_I2C</li>
+<li>EUSCI_A_SPI</li>
+<li>EUSCI_B_SPI</li>
+<li>EUSCI_A_UART</li>
+<li>FRAM</li>
+<li>GPIO</li>
+<li>MPU</li>
+<li>MPY32</li>
+<li>PMM</li>
+<li>REF_A</li>
+<li>RTC_B</li>
+<li>SFR</li>
+<li>SYS</li>
+<li>TIMER_A</li>
+<li>TIMER_B</li>
+<li>TLV</li>
+<li>WDT_A</li>
+</ul>
+</ul>
+<h2><a name="Dependencies" id="Dependencies">Dependencies</a></h2>
+MSP4305xx_6xx devices
+<ul>
+<li>CCS 5.3.0</li>
+<li>IAR 5.20.1</li>
+</ul>
+MSP430FR57xx devices
+<ul>
+<li>CCS 5.3.0</li>
+<li>IAR 5.40</li>
+</ul>
+MSP430FR5xx_6xx devices
+<ul>
+<li>CCS 5.5</li>
+<li>IAR 5.60</li>
+</ul>
+<h2><a name="Validation" id="Validation">Validation
+Information</a></h2>
+<p>This release is a GA version.</p>
+<h2><a name="Upgrade_and_Compatibility_Information"></a>Upgrade
+and Compatibility Information</h2><big><span style="font-weight: bold;">Steps to&nbsp;upgrade from Driverlib 1.60 to Driverlib 1.70 </span></big><br style="font-weight: bold;"><ol><li style="font-weight: bold;">Add compiler define DRIVERLIB_LEGACY_MODE</li><li><span style="font-weight: bold;">Include "driverlib.h" instead of individual module header files ( eg. fram.h, wdt_a.h etc.)</span></li></ol>Removal of baseaddress removes support of Grace 2.20.02.32. Users that
+rely on Grace should not update Driver Library at this time until a new
+Grace is released. <br><br>As
+part of our continued process of
+optimizing MSP430 driverlib and standardizing the MSP430 driverlib APIs
+we
+have segregated the MSP430 modules into<o:p></o:p>
+<ul>
+<li>&#8216;CORE&#8217; modules &nbsp;- those that
+would have ONLY one instance of the module in a single device.<o:p></o:p></li>
+<li>&#8216;PERIPHERAL&#8217; modules &#8211; those that
+could have multiple instances of the module in a single device.<o:p></o:p></li>
+</ul>
+<p>This
+would reflect as the
+baseaddress of module being absent/present in the module driverlib API
+based on
+if the module is a core/peripheral.<span style="color: rgb(31, 73, 125);"> </span>This
+change increases performance in some APIs and allows greater software
+standardization across MCU platforms in TI&#8217;s portfolio. We believe this
+also
+increases readability by removing an extra parameter in APIs for
+peripherals
+that will only have one instance. <o:p></o:p></p>
+<p>Based
+on this rule, we had to
+change some of the existing driverlib APIs to remove the baseaddress
+parameter.
+This would break compatibility for existing customers. <o:p></o:p></p>
+<p>To
+provide backward compatibility&nbsp;</p>
+<ol>
+<li>We will provide a compiler define
+DRIVERLIB_LEGACY_MODE. If this is predefined in the compiler settings,
+the
+older APIs will work (Pre 1.70 Release).</li>
+<li>The user must also include &nbsp;the <o:p></o:p>
+&#8220;driverlib.h&#8221;
+header file released in 1.60 driverlib onwards instead of the
+individual header
+files. <o:p>&nbsp;</o:p></li>
+</ol>
+<p>If
+DRIVERLIB_LEGACY_MODE compiler
+define is absent, then the newer APIs take effect (Post 1.70 Release). <o:p></o:p></p>
+<p><b><span style="color: red;">Without making
+the above change, most
+existing projects that rely on driverlib 1.60 or below will fail to
+compile by default</span>.</b>
+Adding the compiler define DRIVERLIB_LEGACY_MODE and including
+&#8220;driverlib.h&#8221;
+instead of individual header files is necessary to get the projects to
+compile
+in legacy mode(using the older APIs).&nbsp;<span style="color: rgb(31, 73, 125);"><o:p></o:p></span><br>
+</p>
+<p>We
+advise newer projects that are
+in the process of development to adopt the newer APIs. The older APIs
+are still
+available in the deprecated section.<span style="color: rgb(31, 73, 125);"> <o:p></o:p></span>Here
+is the affected peripheral
+list.<o:p></o:p></p>
+<p class="MsoListParagraph">MSP430F5xx_6xx<o:p></o:p></p>
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span>DMA<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span>FLASH<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""></span></span>MPY32<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>PMM<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">
+</span></span></span>RAM<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>SFR<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>SYS<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>UCS<o:p></o:p></li>
+</ul>
+<p class="MsoListParagraph">MSP430FR5xx_6xx<o:p></o:p></p>
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">
+</span></span></span>CS</li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>DMA<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>FRAM<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span>MPY32<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span>PMM<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>SFR<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""></span></span>SYS<o:p></o:p></li>
+</ul>
+<p class="MsoListParagraph">MSP430FR57xx<o:p></o:p></p>
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>CS<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>DMA<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""></span></span>FRAM<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"></span>MPY32<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>PMM<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>SFR<o:p></o:p></li>
+<li><span style="font-family: &quot;Courier New&quot;;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span>SYS<o:p></o:p></li>
+</ul>
+<h2><a name="Examples" id="Examples">Examples</a></h2>
+<p>The
+examples may be built with either IAR, CCS or GCC. To build the
+examples navigate to
+examples/&lt;family&gt;/&lt;peripheral&gt;/&lt;ide&gt;
+and double
+click the .eww project files for IAR, import the .projectSpec file for
+CCS or run a "make -f " for the GCC makefile..<br>
+</p>
+<p>Current supported families are found in the <a href="#Device_Support">Device Support</a> section of
+the release notes.</p>
+<p>Current supported peripherals are found in the <a href="#Peripheral_Support">Peripheral Support</a>
+section of the release notes.</p>
+<h2><a name="Known_Issues2"></a>Known Issues</h2>
+<ul>
+</ul>
+<ul>
+<li>Asserts in CCS&nbsp;work only when the project is
+optimized for size</li>
+</ul>
+<hr>
+<h2><a name="Versioning" id="Versioning">Versioning</a></h2>
+<p>This is build 1.80.00.18 of&nbsp; MSP430 driver library.</p>
+<h2><a name="Technical_Support" id="Technical_Support">Technical
+Support and Product Updates</a></h2>
+<ul>
+<li>Please visit the <a href="http://e2e.ti.com/support/microcontrollers/msp430/default.aspx">MSP430
+E2E forum</a> for driver library support.<br>
+</li>
+<li>For other questions and support, please
+visit <a href="http://support.ti.com/">support.ti.com</a>.</li>
+<li><small><small><big><big>E-Mail us
+directly at&nbsp;<font size="3"><big><big><span style="font-size: 12pt;"><a title="mailto:msp430ware@list.ti.com" href="mailto:msp430ware@list.ti.com">msp430ware@list.ti.com.</a></span></big></big></font></big></big><font face="Times New Roman" size="3"><span style="font-size: 12pt;"><o:p></o:p></span></font></small></small></li>
+</ul>
+<h2><small><small>Additional Resources</small></small></h2>
+<small><big>For more information, visit <a href="http://www.ti.com">www.ti.com</a>.</big>
+</small>
+</body></html>

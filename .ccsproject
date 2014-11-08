@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?ccsproject version="1.0"?>
+<projectOptions>
+	<deviceVariant value="MSP430F5529"/>
+	<deviceFamily value="MSP430"/>
+	<codegenToolVersion value="4.3.3"/>
+	<isElfFormat value="true"/>
+	<linkerCommandFile value="lnk_msp430f5529.cmd"/>
+	<rts value="libc.a"/>
+	<createSlaveProjects value=""/>
+	<templateProperties value="id=H8_Keyboard.projectspec.H8_Keyboard,"/>
+	<connection value="common/targetdb/connections/TIMSP430-USB.xml"/>
+	<isTargetManual value="false"/>
+</projectOptions>
