@@ -144,7 +144,8 @@ const PortPinMap INDICATORS_PORTPIN[NUM_INDICATORS] = {
 					GPIO_PIN4|GPIO_PIN5|GPIO_PIN6|GPIO_PIN7
 
 /* Use this macro to convert 16bit ADC values to 8-bit if needed */
-#define Convert8Bit(ui32Value)  ((int8_t)((0x7ff - ui32Value) >> 4))
+//#define Convert8Bit(ui32Value)  ((int8_t)((0x7ff - ui32Value) >> 4))
+#define Convert8Bit(ui32Value)  (ui32Value)
 
 extern volatile uint8_t adcUpdateAvailable;
 volatile USB_GamepadReportTx gamepadReportTx;
@@ -402,7 +403,7 @@ void initADC(void)
 
     ADC12_A_setupSamplingTimer(ADC12_A_BASE,
                                ADC12_A_CYCLEHOLD_256_CYCLES,
-                               ADC12_A_CYCLEHOLD_4_CYCLES,
+                               ADC12_A_CYCLEHOLD_256_CYCLES,
                                ADC12_A_MULTIPLESAMPLESENABLE);
 
     ADC12_A_memoryConfigure(ADC12_A_BASE,
@@ -510,14 +511,14 @@ void ADC12ISR(void)
     case 26: break;         //Vector 26:  ADC12IFG10
     case 28: break;         //Vector 28:  ADC12IFG11
     case 30:                //Vector 30:  ADC12IFG12
-		gamepadReportTx.ax =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_12);
-		gamepadReportTx.ay =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_4);
-		gamepadReportTx.az =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_3);
-		gamepadReportTx.ar =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_2);
-		gamepadReportTx.bx =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_1);
-		gamepadReportTx.by =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_0);
-		gamepadReportTx.bz =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_6);
-		gamepadReportTx.br =  ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_5);
+		gamepadReportTx.ax =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_12));
+		gamepadReportTx.ay =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_4));
+		gamepadReportTx.az =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_3));
+		gamepadReportTx.ar =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_2));
+		gamepadReportTx.bx =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_1));
+		gamepadReportTx.by =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_0));
+		gamepadReportTx.bz =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_6));
+		gamepadReportTx.br =  Convert8Bit(ADC12_A_getResults(ADC12_A_BASE, ADC12_A_MEMORY_5));
 		adcUpdateAvailable = TRUE;
     	__bic_SR_register_on_exit(LPM3_bits);   //Wake main from LPMx
 		break;
