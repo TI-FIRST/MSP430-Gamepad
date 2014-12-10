@@ -61,6 +61,8 @@ extern "C"
 #define USB_HID_RX              0x33
 #define USB_HID_RY              0x34
 #define USB_HID_RZ              0x35
+#define USB_HID_SLIDER			0x36
+#define USB_HID_DIAL			0x37
 #define USB_HID_VX              0x40
 #define USB_HID_VY              0x41
 #define USB_HID_VZ              0x42

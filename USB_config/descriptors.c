@@ -198,10 +198,10 @@ Collection(USB_HID_APPLICATION),
         Usage (USB_HID_Y),
         Usage (USB_HID_Z),
         Usage (USB_HID_RX),
-        Usage (USB_HID_VX),
-        Usage (USB_HID_VY),
-        Usage (USB_HID_VZ),
-        Usage (USB_HID_VRX),
+        Usage (USB_HID_RY),
+        Usage (USB_HID_RZ),
+        Usage (USB_HID_SLIDER),
+        Usage (USB_HID_DIAL),
         //
         // 8 16-bit absolute values.
         //
