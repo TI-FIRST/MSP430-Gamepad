@@ -110,7 +110,7 @@ uint8_t USB_handleVbusOffEvent ()
  */
 uint8_t USB_handleResetEvent ()
 {
-    //TO DO: You can place your code here
+	usbHidReportSendComplete = TRUE;
 
     return (TRUE);      //return TRUE to wake the main loop (in the case the CPU slept before interrupt)
 }
