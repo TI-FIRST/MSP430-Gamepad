@@ -285,6 +285,25 @@ extern "C"
 
 //*****************************************************************************
 //
+//! This is a macro to assist adding Logical Maximum entries in HID report
+//! descriptors, when the representation of the logical maximum value requires
+//! 16 bits to represent.
+//!
+//! \param i16Value is the Logical Maximum value.
+//!
+//! This macro takes a value and prepares it to be placed as a Logical Maximum
+//! entry into a HID report structure.  This is the actual maximum value for
+//! the range of values associated with a field.
+//!
+//! \return Not a function.
+//
+//*****************************************************************************
+#define LogicalMaximum16b(i16Value)                                           \
+                                  0x26, ((i16Value) & 0xFF),                  \
+                                  (((i16Value) >> 8) & 0xFF)
+
+//*****************************************************************************
+//
 //! This is a macro to assist adding Physical Minimum entries in HID report
 //! descriptors.
 //!

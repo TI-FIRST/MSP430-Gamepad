@@ -44,7 +44,7 @@
 
 uint16_t const report_desc_size[HID_NUM_INTERFACES] =
 {
-80
+85
 };
 uint8_t const report_len_input[HID_NUM_INTERFACES] =
 {
@@ -191,7 +191,7 @@ Collection(USB_HID_APPLICATION),
     Collection (USB_HID_PHYSICAL),
 
         //
-        // The X, Y and Z values which are specified as 8-bit absolute
+        // The X, Y and Z values which are specified as 12-bit absolute
         // position values.
         //
         Usage (USB_HID_X),
@@ -203,8 +203,11 @@ Collection(USB_HID_APPLICATION),
         Usage (USB_HID_SLIDER),
         Usage (USB_HID_DIAL),
         //
-        // 8 16-bit absolute values.
+        // 8 16-bit absolute values (but only 12 bit range due to 12-bit
+        // ADCs).
         //
+        LogicalMinimum(0),
+        LogicalMaximum16b(4095),
         ReportSize(16),
         ReportCount(8),
         Input(USB_HID_INPUT_DATA | USB_HID_INPUT_VARIABLE |
